@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Monuments" %>
+
+<h1>Monuments</h1>
+
+<div data-controller="insert-in-list">
+  <div id="monuments" data-insert-in-list-target="items">
+    <% @monuments.each do |monument| %>
+      <%= render monument %>
+      <p>
+        <%= link_to "Show this monument", monument %>
+      </p>
+    <% end %>
+  </div>
+  <div data-controller="toggle">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a monument</button>
+    <div data-toggle-target="togglableElement" class="d-none">
+      <%= render 'form', monument: @new_monument %>
+    </div>
+  </div>
+</div>
